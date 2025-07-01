@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Activity</title>
+</head>
+<body>
+
+  <h2>Time to Conquer Your To-Do List!</h2>
+
+  <button id="addBtn">Add Task</button>
+  <button id="viewBtn">View Tasks</button>
+  <button id="deleteBtn">Delete Tasks</button>
+
+
+  <section id="addTask" class="task-section">
+  <h3>Add a Task</h3>
+  <input type="text" id="taskInput" placeholder="Enter task">
+  <button id="addTaskBtn">Add</button> 
+</section>
+  <section id="viewTask" class="task-section">
+    <h3>Your Tasks</h3>
+    <ul id="taskList"></ul>
+  </section>
+  <section id="deleteTask" class="task-section">
+    <h3>Delete a Task</h3>
+    <p>You can delete tasks using ❌ button in the view section.</p>
+  </section>
+
+  <script>
+    document.getElementById("addBtn").onclick = () => showSection("addTask");
+    document.getElementById("viewBtn").onclick = () => showSection("viewTask");
+    document.getElementById("deleteBtn").onclick = () => showSection("deleteTask");
+
+    // Show/Hide sections
+function showSection(id) {
+  document.querySelectorAll('.task-section').forEach(section => {
+    section.style.display = 'none';
+  });
+  document.getElementById(id).style.display = 'block';
+}
+
+// Add task logic
+function addTask() {
+  const input = document.getElementById("taskInput");
+  const taskText = input.value.trim();
+  if (taskText === "") return;
+
+  const li = document.createElement("li");
+  li.textContent = taskText;
+
+  const delBtn = document.createElement("button");
+  delBtn.textContent = "❌";
+  delBtn.onclick = () => li.remove();
+
+  li.appendChild(delBtn);
+  document.getElementById("taskList").appendChild(li);
+  input.value = "";
+}
+
+// ✅ Event listeners using ids
+document.getElementById("addBtn").onclick = () => showSection("addTask");
+document.getElementById("viewBtn").onclick = () => showSection("viewTask");
+document.getElementById("deleteBtn").onclick = () => showSection("deleteTask");
+document.getElementById("addTaskBtn").onclick = addTask;
+
+// Optional: default view
+window.onload = () => {
+  showSection('addTask');
+};
+
+  </script>
+</body>
+</html>

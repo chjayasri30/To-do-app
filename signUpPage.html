@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Sign Up Page</title>
+</head>
+<body>
+  <h2>Sign Up Page</h2>
+  <br>
+  <form id="signUpForm">
+    <div>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" required>
+    </div>
+
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required>
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required>
+    </div>
+
+    <button id="submit">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="signInPage.html">Sign In</a></p>
+  <script>
+    document.getElementById('signUpForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const user = {
+            firstName: document.getElementById('firstName').value.trim(),
+            lastName: document.getElementById('lastName').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            password: document.getElementById('password').value
+        };
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        if (user.password !== confirmPassword) {
+            alert('Passwords do not match.');
+            return;
+        }
+
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        users.push(user);
+        let exists = false;
+        for (let i = 0; i < users.length - 1; i++) {
+            if (users[i].email === user.email) {
+            exists = true;
+            break;
+            }
+        }
+        if (exists) {
+            alert("User already exists!");
+            return;
+        }
+        localStorage.setItem('users', JSON.stringify(users));
+        alert("Sign up successful!");
+        window.location.href = "index.html";
+
+    });
+  </script>
+</body>
+</html>

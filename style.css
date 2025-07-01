@@ -1,0 +1,66 @@
+body {
+  background-color: blueviolet;
+  text-align: center; 
+  margin-top: 100px;   
+}
+h1 {
+  color: black;
+  font-size: 40px;
+}
+p {
+  color: black;
+  font-size: 25px;
+}
+#SignUpBtn, #SignInBtn, #submit, #manageBtn, #addBtn, #viewBtn, #deleteBtn, #addTaskBtn{
+  color: white;
+  background-color: black;
+  border: none;
+  padding: 10px 20px;
+  font-size: 25px;
+  cursor: pointer;
+  display: inline-block;  
+  margin: 20px 10px;       
+}
+
+h2{
+  color: black;
+  font-size: 30px;
+}
+
+#signInForm, #signUpForm{
+  color: black;
+  font-size: 25px;
+  text-align: center; 
+}
+form div {
+  margin-bottom: 15px;
+}
+label {
+  display: inline-block;
+  width: 160px;
+  font-weight: bold;
+}
+
+input {
+  padding: 8px;
+  width: 220px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#logoutBtn{
+  color: white;
+  background-color: black;
+  font-size: 20px;
+  position: fixed;
+  right: 30px;
+  top: 30px;
+  padding: 12px 28px;
+  border: none;
+  cursor: pointer;
+}
+
+.task-section {
+  display: none;
+}
+
